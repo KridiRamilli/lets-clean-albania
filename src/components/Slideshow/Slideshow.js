@@ -21,16 +21,19 @@ const Slideshow = ({ cleaned, order, showModal, author, images }) => {
           return (
             <>
               <div className='each-fade'>
+                <p className='image-author'>
+                  Reported by {author && displayUserName(author)}{" "}
+                </p>
                 <div className='image-container'>
                   <img src={el} alt='img' />
                 </div>
               </div>
               <div className='image-info'>
-                <p className='image-author'>
-                  Reported by {author && displayUserName(author)}{" "}
-                </p>
                 <button className='image-edit' onClick={handleButtonClick}>
                   Edit
+                </button>
+                <button className='image-edit' onClick={handleButtonClick}>
+                  Clean
                 </button>
               </div>
             </>
