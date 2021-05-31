@@ -2,15 +2,21 @@ import React from "react";
 import { Fade } from "react-slideshow-image";
 import { connect } from "react-redux";
 import { showModal } from "../../redux/actions/toolsAction";
-import { displayUserName } from "./../../utils/index";
+import { displayUserName, isSameUser } from "./../../utils/index";
 
 import "./Slideshow.css";
 
-const Slideshow = ({ cleaned, order, showModal, author, images }) => {
+const Slideshow = ({
+  cleaned,
+  order,
+  showModal,
+  author,
+  images,
+  currentUser,
+}) => {
   function handleButtonClick() {
     showModal(true);
   }
-  console.log(images);
   return (
     <div className={cleaned ? "slide-container-two" : "slide-container-one"}>
       <Fade
@@ -29,9 +35,11 @@ const Slideshow = ({ cleaned, order, showModal, author, images }) => {
                 </div>
               </div>
               <div className='image-info'>
-                <button className='image-edit' onClick={handleButtonClick}>
-                  Edit
-                </button>
+                {isSameUser(currentUser, author) && (
+                  <button className='image-edit' onClick={handleButtonClick}>
+                    Edit
+                  </button>
+                )}
                 <button className='image-edit' onClick={handleButtonClick}>
                   Clean
                 </button>

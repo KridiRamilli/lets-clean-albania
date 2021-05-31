@@ -10,6 +10,8 @@ import "esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css";
 import "./Map.css";
 import Bin from "../../assets/garbbage.png";
 import Markers from "../../data";
+import { uniqueId } from "../../utils";
+import { displayUserName } from "../../utils/index";
 
 class Map extends Component {
   state = {
@@ -28,9 +30,25 @@ class Map extends Component {
         latlng: { lat, lng },
       } = e;
       this.setState((prevState) => ({
-        markers: prevState.markers.concat({ lat, lng }),
+        markers: prevState.markers.concat({
+          id: uniqueId("id_"),
+          author: {
+            id: "ewbqJmJvrOO52zcOYySjuvyTFSa2",
+            displayName: "Kridi Ramilli",
+          },
+          images: [
+            "https://api.time.com/wp-content/uploads/2021/03/trash-pandemic-covid-19-01.jpg",
+            "https://image.shutterstock.com/image-photo/closeup-portrait-yong-woman-casual-260nw-1554086789.jpg",
+            "https://api.time.com/wp-content/uploads/2021/03/trash-pandemic-covid-19-01.jpg",
+          ],
+          location: {
+            lat,
+            lng,
+          },
+          cleaned: false,
+        }),
       }));
-      this.props.showModal(true);
+      // this.props.showModal(true);
     } else {
       return null;
     }
@@ -41,7 +59,6 @@ class Map extends Component {
     const center = [41.327953, 19.819025];
     const { markers } = this.state;
     const { addGarbage } = this.props;
-    console.log(markers);
     return (
       <div className='main__body'>
         <MapContainer center={center} zoom={15} scrollWheelZoom={true}>

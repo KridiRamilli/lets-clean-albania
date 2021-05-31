@@ -1,18 +1,22 @@
 export const displayUserName = (user) => {
   if (!user) return "";
-  // let { displayName } = user;
-  let [name, lname] = user.split(" ");
+  let { displayName } = user;
+  let [name, lname] = displayName.split(" ");
   let userName = `#${name.toLowerCase()}${lname.toLowerCase()}`;
   return userName;
 };
 
-export const getInitials = function (displayName) {
+export const getInitials = (displayName) => {
   if (displayName) {
     const userName = displayName.split(" ");
     let [name = "", lname = " "] = userName;
     let initials = name[0].toUpperCase() + lname[0].toUpperCase();
     return initials;
   }
+};
+
+export const isSameUser = (currentUser, author) => {
+  return currentUser.uid === author.id;
 };
 
 export const uniqueId = (() => {

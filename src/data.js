@@ -3,7 +3,10 @@ import { uniqueId } from "./utils";
 const markers = [
   {
     id: uniqueId("id_"),
-    author: "Kridi Ramilli",
+    author: {
+      id: "ewbqJmJvrOO52zcOYySjuvyTFSa2",
+      displayName: "Kridi Ramilli",
+    },
     images: [
       "https://api.time.com/wp-content/uploads/2021/03/trash-pandemic-covid-19-01.jpg",
       "https://image.shutterstock.com/image-photo/closeup-portrait-yong-woman-casual-260nw-1554086789.jpg",
@@ -17,7 +20,10 @@ const markers = [
   },
   {
     id: uniqueId("id_"),
-    author: "Kridi Ramilli",
+    author: {
+      id: "ewbqJmJvrOO52zcOYySjuvyTFSa2",
+      displayName: "Kridi Ramilli",
+    },
     images: [
       "https://api.time.com/wp-content/uploads/2021/03/trash-pandemic-covid-19-01.jpg",
       "https://image.shutterstock.com/image-photo/closeup-portrait-yong-woman-casual-260nw-1554086789.jpg",
@@ -31,7 +37,10 @@ const markers = [
   },
   {
     id: uniqueId("id_"),
-    author: "Kridi Ramilli",
+    author: {
+      id: "ewbqJmJvrOO52zcOYySjuvyTFSa2",
+      displayName: "Kridi Ramilli",
+    },
     images: [
       "https://api.time.com/wp-content/uploads/2021/03/trash-pandemic-covid-19-01.jpg",
       "https://image.shutterstock.com/image-photo/closeup-portrait-yong-woman-casual-260nw-1554086789.jpg",
@@ -45,7 +54,10 @@ const markers = [
   },
   {
     id: uniqueId("id_"),
-    author: "Kridi Ramilli",
+    author: {
+      id: "ewbqJmJvrOO52zcOYySjuvyTFSa2",
+      displayName: "Kridi Ramilli",
+    },
     images: [
       "https://api.time.com/wp-content/uploads/2021/03/trash-pandemic-covid-19-01.jpg",
       "https://image.shutterstock.com/image-photo/closeup-portrait-yong-woman-casual-260nw-1554086789.jpg",
@@ -59,7 +71,10 @@ const markers = [
   },
   {
     id: uniqueId("id_"),
-    author: "Kridi Ramilli",
+    author: {
+      id: "ewbqJmJvrOO52zcOYySjuvyTFSa2",
+      displayName: "Kridi Ramilli",
+    },
     images: [
       "https://api.time.com/wp-content/uploads/2021/03/trash-pandemic-covid-19-01.jpg",
       "https://image.shutterstock.com/image-photo/closeup-portrait-yong-woman-casual-260nw-1554086789.jpg",
@@ -73,7 +88,10 @@ const markers = [
   },
   {
     id: uniqueId("id_"),
-    author: "Kridi Ramilli",
+    author: {
+      id: "ewbqJmJvrOO52zcOYySjuvyTFSa2",
+      displayName: "Kridi Ramilli",
+    },
     images: [
       "https://api.time.com/wp-content/uploads/2021/03/trash-pandemic-covid-19-01.jpg",
       "https://image.shutterstock.com/image-photo/closeup-portrait-yong-woman-casual-260nw-1554086789.jpg",
@@ -87,7 +105,10 @@ const markers = [
   },
   {
     id: uniqueId("id_"),
-    author: "Kridi Ramilli",
+    author: {
+      id: "ewbqJmJvrOO52zcOYySjuvyTFSa2",
+      displayName: "Kridi Ramilli",
+    },
     images: [
       "https://api.time.com/wp-content/uploads/2021/03/trash-pandemic-covid-19-01.jpg",
       "https://image.shutterstock.com/image-photo/closeup-portrait-yong-woman-casual-260nw-1554086789.jpg",
@@ -101,7 +122,10 @@ const markers = [
   },
   {
     id: uniqueId("id_"),
-    author: "Kridi Ramilli",
+    author: {
+      id: "ewbqJmJvrOO52zcOYySjuvyTFSa2",
+      displayName: "Kridi Ramilli",
+    },
     images: [
       "https://api.time.com/wp-content/uploads/2021/03/trash-pandemic-covid-19-01.jpg",
       "https://image.shutterstock.com/image-photo/closeup-portrait-yong-woman-casual-260nw-1554086789.jpg",
@@ -115,7 +139,10 @@ const markers = [
   },
   {
     id: uniqueId("id_"),
-    author: "Kridi Ramilli",
+    author: {
+      id: "ewbqJmJvrOO52zcOYySjuvyTFSa2",
+      displayName: "Kridi Ramilli",
+    },
     images: [
       "https://api.time.com/wp-content/uploads/2021/03/trash-pandemic-covid-19-01.jpg",
       "https://image.shutterstock.com/image-photo/closeup-portrait-yong-woman-casual-260nw-1554086789.jpg",
@@ -129,7 +156,10 @@ const markers = [
   },
   {
     id: uniqueId("id_"),
-    author: "Kridi Ramilli",
+    author: {
+      id: "ewbqJmJvrOO52zcOYySjuvyTFSa2",
+      displayName: "Kridi Ramilli",
+    },
     images: [
       "https://api.time.com/wp-content/uploads/2021/03/trash-pandemic-covid-19-01.jpg",
       "https://image.shutterstock.com/image-photo/closeup-portrait-yong-woman-casual-260nw-1554086789.jpg",
