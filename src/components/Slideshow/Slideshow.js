@@ -23,26 +23,32 @@ const Slideshow = ({
         duration={1000}
         className={order === "first" && cleaned ? "grayscale-cleaned" : null}
       >
+        <div className='image-info'>
+          {!cleaned ? (
+            <button className='image-edit' onClick={handleButtonClick}>
+              Clean
+            </button>
+          ) : order === "first" ? null : (
+            <p>Cleaned by #kridiramilli</p>
+          )}
+          {isSameUser(currentUser, author) && (
+            <button className='image-edit' onClick={handleButtonClick}>
+              Edit
+            </button>
+          )}
+        </div>
         {images.map((el) => {
           return (
             <>
               <div className='each-fade'>
-                <p className='image-author'>
-                  Reported by {author && displayUserName(author)}{" "}
-                </p>
+                {order === "second" ? null : (
+                  <p className='image-author'>
+                    Reported by {author && displayUserName(author)}{" "}
+                  </p>
+                )}
                 <div className='image-container'>
                   <img src={el} alt='img' />
                 </div>
-              </div>
-              <div className='image-info'>
-                {isSameUser(currentUser, author) && (
-                  <button className='image-edit' onClick={handleButtonClick}>
-                    Edit
-                  </button>
-                )}
-                <button className='image-edit' onClick={handleButtonClick}>
-                  Clean
-                </button>
               </div>
             </>
           );
