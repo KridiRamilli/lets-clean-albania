@@ -19,6 +19,14 @@ export const isSameUser = (currentUser, author) => {
   return currentUser.uid === author.id;
 };
 
+export const progressPercentage = (progress) => {
+  progress = Math.ceil(progress);
+  if (progress > 100) {
+    return 100;
+  }
+  return progress;
+};
+
 export const uniqueId = (() => {
   let num = 0;
   return (prefix) => {

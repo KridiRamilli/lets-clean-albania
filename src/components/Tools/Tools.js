@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import "./Tools.css";
 import Tool from "./Tool";
-import { addGarbage } from "./../../redux/actions/toolsAction";
+import { addGarbageAction } from "./../../redux/actions/toolsAction";
 import garbbage from "../../assets/garbbage.png";
 import cleaned from "../../assets/cleaned.png";
 
@@ -14,7 +14,7 @@ function Tools({ addGarbage, addGarbageStatus }) {
     setisClicked(!isClicked);
   };
   return (
-    <div className="tools">
+    <div className='tools'>
       <Tool handleClick={handleClick} image={garbbage} isClicked={isClicked} />
       <Tool />
     </div>
@@ -22,7 +22,7 @@ function Tools({ addGarbage, addGarbageStatus }) {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  addGarbage: (status) => dispatch(addGarbage(status)),
+  addGarbage: (status) => dispatch(addGarbageAction(status)),
 });
 
 const mapStateToProps = (state) => ({

@@ -4,8 +4,8 @@ import "./Form.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Fade from "react-reveal/Fade";
-import { auth, firestore as db } from "../../firebase";
-import { fromSignUp } from "../../redux/actions/userActions";
+import { auth, firestore as db, generateUserDoc } from "../../firebase";
+import { fromSignUpAction } from "../../redux/actions/userActions";
 import SignUpSuccess from "../SignUpSuccess/SignUpSuccess";
 
 class SignUpForm extends React.Component {
@@ -42,7 +42,7 @@ class SignUpForm extends React.Component {
     });
   };
 
-  handleSubmit = () => {
+  handleSubmit = async () => {
     const { email, password, username } = this.state;
     this.setState({
       shouldCheckInput: true,
@@ -60,6 +60,7 @@ class SignUpForm extends React.Component {
                 displayName: username,
               })
               .then(() => {
+                //TODO rename displayname success
                 this.setState({ displayName: "success" });
               })
               .catch((error) => {
@@ -67,19 +68,10 @@ class SignUpForm extends React.Component {
               });
 
             //TODO add user in firestore db (seperate function)
-            db.collection("users")
-              .add({
-                username,
-                email,
-                password,
-                signed: Date.now(),
-              })
-              .then((doc) => {
-                auth.signOut();
-                console.log("Document written with ID: ", doc.id);
-              })
-              .catch((err) => console.error("Error adding document: ", err));
-
+            const userRef = generateUserDoc(user, { displayName: username });
+            if (userRef) {
+              auth.signOut();
+            }
             this.setState(
               {
                 isSignedUp: true,
@@ -290,6 +282,7 @@ class SignUpForm extends React.Component {
                 type='text'
                 name={"username"}
                 placeholder='Name...'
+                autocomplete='off'
               />
               <Input
                 validation={shouldCheckInput && this.checkInput("email")}
@@ -333,7 +326,7 @@ class SignUpForm extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  fromSignUp: (status) => dispatch(fromSignUp(status)),
+  fromSignUp: (status) => dispatch(fromSignUpAction(status)),
 });
 
 export default connect(null, mapDispatchToProps)(SignUpForm);

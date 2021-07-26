@@ -39,3 +39,14 @@
   height: 70px;
   background-color: transparent;
 }
+
+.leaflet-touch .geocoder-control-suggestions {
+  position: relative;
+  width: 400px;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  color: #8898a8;
+  border: none;
+  box-shadow: 0px 0px 10px #ccc;
+}

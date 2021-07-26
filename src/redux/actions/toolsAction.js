@@ -1,13 +1,13 @@
 import { ADD_GARBAGE, SHOW_MODAL } from "../types";
 
-export const addGarbage = (status) => {
+export const addGarbageAction = (status) => {
   return {
     type: ADD_GARBAGE,
     payload: status,
   };
 };
 
-export const showModal = (status) => {
+export const showModalAction = (status) => {
   return {
     type: SHOW_MODAL,
     payload: status,

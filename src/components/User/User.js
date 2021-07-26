@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { auth } from "../../firebase";
-import { fromSignUp } from "../../redux/actions/userActions";
+import { fromSignUpAction } from "../../redux/actions/userActions";
 import { getInitials } from "../../utils";
 
 import "./User.css";
@@ -61,7 +61,7 @@ class User extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  fromSignUp: (status) => dispatch(fromSignUp(status)),
+  fromSignUp: (status) => dispatch(fromSignUpAction(status)),
 });
 
 export default connect(null, mapDispatchToProps)(User);

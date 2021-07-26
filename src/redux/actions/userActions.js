@@ -1,13 +1,11 @@
 import { SET_CURRENT_USER, FROM_SIGN_UP } from "./../types";
 
-export const setCurrentUser = (user) => ({
+export const setCurrentUserAction = (user) => ({
   type: SET_CURRENT_USER,
   payload: user,
 });
 
-export const fromSignUp = (status) => ({
+export const fromSignUpAction = (status) => ({
   type: FROM_SIGN_UP,
   payload: status,
 });
-
-export default { setCurrentUser, fromSignUp };

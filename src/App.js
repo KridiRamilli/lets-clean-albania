@@ -5,10 +5,10 @@ import { connect } from "react-redux";
 
 import LogIn from "./screens/LogIn/LogIn.js";
 import Main from "./screens/Main/Main";
-import { auth } from "./firebase";
+import { auth, firestore } from "./firebase";
 
 import "./App.css";
-import { setCurrentUser } from "./redux/actions/userActions.js";
+import { setCurrentUserAction } from "./redux/actions/userActions.js";
 
 class App extends Component {
   unsubscribeAuthListener = null;
@@ -49,7 +49,7 @@ class App extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+  setCurrentUser: (user) => dispatch(setCurrentUserAction(user)),
 });
 
 const mapStateToProps = (state) => {

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Fade from "react-reveal/Fade";
 import { connect } from "react-redux";
 import { auth } from "../../firebase";
-import { fromSignUp } from "../../redux/actions/userActions";
+import { fromSignUpAction } from "../../redux/actions/userActions";
 
 class SignInForm extends React.Component {
   state = {
@@ -208,7 +208,7 @@ class SignInForm extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  fromSignUp: (status) => dispatch(fromSignUp(status)),
+  fromSignUp: (status) => dispatch(fromSignUpAction(status)),
 });
 
 export default connect(null, mapDispatchToProps)(SignInForm);
