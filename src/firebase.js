@@ -54,7 +54,7 @@ export const generateMarker = async (author, location, images, description) => {
   }
   try {
     markerRef.add({
-      author: {
+      reportedBy: {
         id: author.uid,
         displayName: author.displayName,
       },

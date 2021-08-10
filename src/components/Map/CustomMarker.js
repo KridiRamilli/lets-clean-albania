@@ -1,14 +1,23 @@
 import React from "react";
 import { Popup, Marker } from "react-leaflet";
+import { connect } from "react-redux";
 import Slideshow from "../Slideshow/Slideshow";
 import { redIcon, greenIcon } from "./Icons";
-function CustomMarker({ center, author, cleaned, images }) {
+import { setActiveMarkerAction } from "./../../redux/actions/markerActions";
+function CustomMarker({
+  center,
+  reportedBy,
+  cleaned,
+  images,
+  id,
+  setActiveMarker,
+}) {
   return (
     <Marker
       position={center}
       eventHandlers={{
-        click: () => {
-          console.log("marker clicked");
+        click: (ev) => {
+          setActiveMarker(id);
         },
       }}
       icon={cleaned ? greenIcon : redIcon}
@@ -16,14 +25,14 @@ function CustomMarker({ center, author, cleaned, images }) {
       <Popup className={cleaned ? "image__popup-two" : "image__popup-one"}>
         <Slideshow
           images={images}
-          author={author}
+          reportedBy={reportedBy}
           cleaned={cleaned}
           order={"first"}
         />
         {cleaned ? (
           <Slideshow
             images={images}
-            author={author}
+            reportedBy={reportedBy}
             cleaned={cleaned}
             order={"second"}
           />
@@ -33,4 +42,8 @@ function CustomMarker({ center, author, cleaned, images }) {
   );
 }
 
-export default CustomMarker;
+const mapDispatchToProps = (dispatch) => ({
+  setActiveMarker: (marker) => dispatch(setActiveMarkerAction(marker)),
+});
+
+export default connect(null, mapDispatchToProps)(CustomMarker);

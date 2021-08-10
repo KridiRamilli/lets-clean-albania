@@ -4,45 +4,14 @@ import EsriLeafletGeoSearch from "react-esri-leaflet/plugins/EsriLeafletGeoSearc
 import { BasemapLayer } from "react-esri-leaflet";
 import { connect } from "react-redux";
 import CustomMarker from "./CustomMarker";
-import { showModalAction } from "../../redux/actions/toolsAction";
+import { showModalAction } from "../../redux/actions/toolsActions";
 import Events from "./Events";
 import "esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css";
 import "./Map.css";
 import Bin from "../../assets/garbbage.png";
 
 function Map({ handleMapClick, addGarbage, showModal, markers }) {
-  // handleMapClick = (e) => {
-  //   if (this.props.addGarbage) {
-  //     const {
-  //       latlng: { lat, lng },
-  //     } = e;
-  //     this.setState((prevState) => ({
-  //       markers: prevState.markers.concat({
-  //         id: uniqueId("id_"),
-  //         author: {
-  //           id: "ewbqJmJvrOO52zcOYySjuvyTFSa2",
-  //           displayName: "Kridi Ramilli",
-  //         },
-  //         images: [
-  //           "https://api.time.com/wp-content/uploads/2021/03/trash-pandemic-covid-19-01.jpg",
-  //           "https://image.shutterstock.com/image-photo/closeup-portrait-yong-woman-casual-260nw-1554086789.jpg",
-  //           "https://api.time.com/wp-content/uploads/2021/03/trash-pandemic-covid-19-01.jpg",
-  //         ],
-  //         location: {
-  //           lat,
-  //           lng,
-  //         },
-  //         cleaned: false,
-  //       }),
-  //     }));
-  //     this.props.showModal(true);
-  //   } else {
-  //     return null;
-  //   }
-  // };
-
   const center = [41.327953, 19.819025];
-
   return (
     //center of map in first render
 
@@ -75,14 +44,15 @@ function Map({ handleMapClick, addGarbage, showModal, markers }) {
             center={[e.location.lat, e.location.lng]}
             cleaned={e.cleaned}
             images={e.images}
-            author={e.author}
+            reportedBy={e.reportedBy}
+            id={e.id}
           />
         ))}
 
         <div
           className='dummyDivForCursor'
           style={{
-            cursor: addGarbage ? `url(${Bin}),auto` : "pointer",
+            cursor: addGarbage ? `url(${Bin}) 22.5 49,auto` : "pointer",
             width: "100vw",
             height: "100vh",
           }}

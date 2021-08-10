@@ -1,7 +1,7 @@
 import React from "react";
 import { Fade } from "react-slideshow-image";
 import { connect } from "react-redux";
-import { showModalAction } from "../../redux/actions/toolsAction";
+import { showModalAction } from "../../redux/actions/toolsActions";
 import { displayUserName, isSameUser } from "./../../utils/index";
 
 import "./Slideshow.css";
@@ -10,13 +10,15 @@ const Slideshow = ({
   cleaned,
   order,
   showModal,
-  author,
-  images,
+  reportedBy,
+  images: { data },
   currentUser,
 }) => {
   function handleButtonClick() {
     showModal(true);
   }
+  const imageData = order === "first" ? data["before"] : data["after"];
+  // console.log(imageData);
   return (
     <div className={cleaned ? "slide-container-two" : "slide-container-one"}>
       <Fade
@@ -26,7 +28,7 @@ const Slideshow = ({
         pauseOnHover={true}
         className={order === "first" && cleaned ? "grayscale-cleaned" : null}
       >
-        {images.map((el, idx) => {
+        {imageData.map((el, idx) => {
           return (
             <React.Fragment key={idx}>
               <div className='each-fade'>
@@ -42,9 +44,10 @@ const Slideshow = ({
                 </div>
               </div>
               <div className='image-info'>
-                {order === "second" ? null : (
+                {order === "second" ||
+                (isSameUser(currentUser, reportedBy) && !cleaned) ? null : (
                   <p className='image-author'>
-                    Reported by {author && displayUserName(author)}{" "}
+                    Reported by {reportedBy && displayUserName(reportedBy)}{" "}
                   </p>
                 )}
                 {!cleaned ? (
@@ -56,7 +59,7 @@ const Slideshow = ({
                     Cleaned by #kridiramilli
                   </p>
                 )}
-                {isSameUser(currentUser, author) && (
+                {isSameUser(currentUser, reportedBy) && !cleaned && (
                   <button className='image-edit' onClick={handleButtonClick}>
                     Edit
                   </button>

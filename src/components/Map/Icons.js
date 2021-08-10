@@ -5,8 +5,8 @@ import GreenIcon from "../../assets/cleaned.png";
 const redIcon = L.icon({
   iconUrl: RedIcon,
   iconSize: [45, 49],
-  iconAnchor: [0, 0],
-  popupAnchor: [22.5, -75],
+  iconAnchor: [22.5, 49],
+  popupAnchor: [0, -75],
   shadowUrl: null,
   shadowSize: null,
   shadowAnchor: null,

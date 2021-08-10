@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import "./Tools.css";
 import Tool from "./Tool";
-import { addGarbageAction } from "./../../redux/actions/toolsAction";
+import { addGarbageAction } from "../../redux/actions/toolsActions";
 import garbbage from "../../assets/garbbage.png";
 import cleaned from "../../assets/cleaned.png";
 

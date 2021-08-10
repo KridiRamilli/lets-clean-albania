@@ -1,14 +1,20 @@
 import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { FiPaperclip } from "react-icons/fi";
-import { showModalAction } from "../../redux/actions/toolsAction";
+import { showModalAction } from "../../redux/actions/toolsActions";
 import { uniqueId } from "../../utils";
-import { generateMarker, storage } from "../../firebase";
+import { firestore, generateMarker, storage } from "../../firebase";
 import ImagePreview from "./ImagePreview";
 import ProgressBar from "./../ProgressBar/ProgressBar";
 import "./Modal.css";
 
-function Modal({ showModal, isModalVisible, markerLocation, currentUser }) {
+function Modal({
+  showModal,
+  isModalVisible,
+  markerLocation,
+  currentUser,
+  activeMarker,
+}) {
   const [images, setImages] = useState([]);
   const [description, setDescription] = useState("");
   const [imagesSize, setImagesSize] = useState(0);
@@ -106,6 +112,24 @@ function Modal({ showModal, isModalVisible, markerLocation, currentUser }) {
     });
   };
 
+  const handleMarkerUpdate = () => {
+    const promiseArr = images.map((el, idx) => {
+      return handleImageUpload(el.imageUrl, idx);
+    });
+    Promise.all(promiseArr).then((res) => {
+      firestore
+        .collection("markers")
+        .doc(`${activeMarker}`)
+        .update({
+          cleaned: true,
+          "images.data.after": res,
+        })
+        .then(() => {
+          console.log("successfully updated");
+        });
+    });
+  };
+
   return !isModalVisible ? null : (
     <div className='modal__bg' onClick={closeModal}>
       <div className='modal'>
@@ -170,7 +194,7 @@ function Modal({ showModal, isModalVisible, markerLocation, currentUser }) {
             className='modal__button modal__button-submit'
             type='submit'
             value='Report'
-            onClick={handleMarkerUpload}
+            onClick={handleMarkerUpdate}
           />
           <input
             className='modal__button modal__button-cancel'
@@ -191,5 +215,6 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => ({
   isModalVisible: state.tools.isModalVisible,
   currentUser: state.user.currentUser,
+  activeMarker: state.marker.activeMarker,
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Modal);
